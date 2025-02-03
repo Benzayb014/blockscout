@@ -165,6 +165,7 @@ defmodule Explorer.Chain do
   @type paging_options :: {:paging_options, PagingOptions.t()}
   @typep balance_by_day :: %{date: String.t(), value: Wei.t()}
   @type api? :: {:api?, true | false}
+  @type show_scam_tokens? :: {:show_scam_tokens?, true | false}
 
   @doc """
   `t:Explorer.Chain.InternalTransaction/0`s from the address with the given `hash`.
@@ -4476,7 +4477,7 @@ defmodule Explorer.Chain do
         )
       )
 
-    %{token_instance | owner: owner}
+    %{token_instance | owner: owner, owner_address_hash: owner_address_hash}
   end
 
   def put_owner_to_token_instance(%Instance{} = token_instance, _token, _options), do: token_instance
